@@ -40,7 +40,7 @@
             align-items: center;
         }
 
-        /* En-tête avec Logo */
+        /* En-tête avec Logo / Badge de secours */
         .profile {
             text-align: center;
             margin-bottom: 32px;
@@ -54,12 +54,28 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 96px;
         }
 
         .logo-img {
             width: 100%;
             height: auto;
             object-fit: contain;
+        }
+
+        /* Style du badge si l'image logo.png ne charge pas */
+        .logo-fallback {
+            width: 96px;
+            height: 96px;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(121, 185, 60, 0.2);
         }
 
         .profile h1 {
@@ -129,6 +145,7 @@
             display: flex;
             flex-direction: column;
             gap: 4px;
+            width: 85%;
         }
 
         .link-title {
@@ -182,14 +199,16 @@
         <!-- Section Profil -->
         <div class="profile">
             <div class="logo-container">
-                <img src="logo.png" alt="Le Panier de la Ferme Primeur" class="logo-img">
+                <!-- Si l'image logo.png échoue à charger, le badge textuel prend sa place automatiquement -->
+                <img src="logo.png" alt="Le Panier de la Ferme Primeur" class="logo-img" onerror="this.style.display='none'; document.getElementById('fallback').style.display='flex';">
+                <div id="fallback" class="logo-fallback" style="display:none;">PF</div>
             </div>
             <h1>Le Panier de la Ferme Primeur</h1>
             <div class="location">📍 Ferme de la Muette · Ecquevilly (78)</div>
             <p class="bio">Des fruits, légumes et produits de crèmerie frais, issus à 80% de producteurs locaux à moins de 30 km.</p>
         </div>
 
-        <!-- Section 1 : Commandes (Les deux pointent vers votre site) -->
+        <!-- Section 1 : Boutique -->
         <div class="section-title">Nos Services en Ligne</div>
         <div class="links-wrapper">
             <a href="https://lepanierdelaferme.fr" class="link-card" target="_blank">
@@ -230,17 +249,31 @@
         <!-- Section 3 : Pratique -->
         <div class="section-title">Infos Pratiques</div>
         <div class="links-wrapper">
-            <a href="https://facebook.com" class="link-card" target="_blank">
+            <div class="link-card">
                 <div class="link-content">
                     <div class="link-title">⏰ Casiers en libre-service</div>
-                    <div class="link-desc">Distributeurs ouverts 7j/7 de 8h à 21h pour vos produits frais</div>
+                    <div class="link-desc">Distributeurs automatiques ouverts 7j/7 de 8h à 21h à la ferme</div>
+                </div>
+                <div class="arrow" style="opacity: 0.3;">•</div>
+            </div>
+            <a href="https://google.com" class="link-card" target="_blank">
+                <div class="link-content">
+                    <div class="link-title">🗺️ Nous situer / Itinéraire GPS</div>
+                    <div class="link-desc">Ferme de la Muette, 78920 Ecquevilly - Ouvrir dans Google Maps</div>
                 </div>
                 <div class="arrow">→</div>
             </a>
             <a href="tel:+33616702139" class="link-card">
                 <div class="link-content">
-                    <div class="link-title">📞 Nous contacter</div>
-                    <div class="link-desc">Une question ? Appelez-nous directement au 06 16 70 21 39</div>
+                    <div class="link-title">📞 Nous appeler</div>
+                    <div class="link-desc">Une question urgente ? Contactez-nous au 06 16 70 21 39</div>
+                </div>
+                <div class="arrow">→</div>
+            </a>
+            <a href="mailto:contact@lepanierdelaferme.fr" class="link-card">
+                <div class="link-content">
+                    <div class="link-title">✉️ Nous envoyer un e-mail</div>
+                    <div class="link-desc">Écrivez-nous directement à contact@lepanierdelaferme.fr</div>
                 </div>
                 <div class="arrow">→</div>
             </a>
